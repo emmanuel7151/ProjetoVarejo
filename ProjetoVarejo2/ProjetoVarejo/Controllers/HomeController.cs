@@ -37,6 +37,10 @@ namespace ProjetoVarejo.Controllers
 
             return View();
         }
+        public IActionResult GerarEtiqueta()
+        {
+            return View("GerarEtiqueta");
+        }
 
         public IActionResult Error()
         {

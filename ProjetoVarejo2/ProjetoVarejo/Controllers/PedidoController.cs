@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ProjetoVarejo.Models;
 using ProjetoVarejo.Models.Data;
 
@@ -47,11 +48,13 @@ namespace ProjetoVarejo.Controllers
         }
 
         // GET: Pedido/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             ViewData["ClienteId"] = new SelectList(_context.Cliente, "ID", "ID");
             ViewData["VendedorId"] = new SelectList(_context.Vendedor, "Id", "Id");
-            ViewData["Produtos"] = new SelectList(_context.Produto, "Id", "Id - Marca - Modelo");
+            //ViewData["Produtos"]
+            var teste = new SelectList(_context.Produto, "Id", "Modelo");
+            ViewBag.teste = JsonConvert.SerializeObject(teste);
             return View();
         }
 

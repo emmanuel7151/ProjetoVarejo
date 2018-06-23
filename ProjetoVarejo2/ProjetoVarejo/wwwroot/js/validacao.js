@@ -104,3 +104,300 @@ function site(v) {
     v = "http://" + dominio + caminho
     return v
 }
+
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+// autocomplete(document.getElementById("myInput"), countries);
+
+function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function (e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false; }
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+            /*check if the item starts with the same letters as the text field value:*/
+            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                /*create a DIV element for each matching element:*/
+                b = document.createElement("DIV");
+                /*make the matching letters bold:*/
+                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                b.innerHTML += arr[i].substr(val.length);
+                /*insert a input field that will hold the current array item's value:*/
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                /*execute a function when someone clicks on the item value (DIV element):*/
+                b.addEventListener("click", function (e) {
+                    /*insert the value for the autocomplete text field:*/
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    /*close the list of autocompleted values,
+                    (or any other open lists of autocompleted values:*/
+                    closeAllLists();
+                });
+                a.appendChild(b);
+            }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function (e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+            /*If the arrow DOWN key is pressed,
+            increase the currentFocus variable:*/
+            currentFocus++;
+            /*and and make the current item more visible:*/
+            addActive(x);
+        } else if (e.keyCode == 38) { //up
+            /*If the arrow UP key is pressed,
+            decrease the currentFocus variable:*/
+            currentFocus--;
+            /*and and make the current item more visible:*/
+            addActive(x);
+        } else if (e.keyCode == 13) {
+            /*If the ENTER key is pressed, prevent the form from being submitted,*/
+            e.preventDefault();
+            if (currentFocus > -1) {
+                /*and simulate a click on the "active" item:*/
+                if (x) x[currentFocus].click();
+            }
+        }
+    });
+    function addActive(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+        }
+    }
+    function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+}
+
+function gerarPdf(TituloItem, PrecoAvista, PrecoAPrazo, QTVezes, TxJuros, OutrosEncargos) {
+    if (nome) {
+        // Youll need to make your image into a Data URL
+        // Use http://dataurl.net/#dataurlmaker
+        var doc = new jsPDF()
+        aux = PrecoAPrazo;
+        PrecoAvista = "Preço a vista: "+ PrecoAvista;
+        PrecoAPrazo = "Preço a prazo: "+ PrecoAPrazo;
+        QTVezes = QTVezes+" vezes de R$"+ aux/QTVezes;
+        TxJuros = "Taxa de Juros " + TxJuros+"%";
+        OutrosEncargos = "Outros Encargos R$ "+OutrosEncargos;
+
+
+        //retangulos
+        doc.roundedRect(20, 20, 50, 30, 1, 1, 'S')
+        doc.roundedRect(79.8, 20, 50, 30, 1, 1, 'S')
+        doc.roundedRect(140, 20, 50, 30, 1, 1, 'S')
+
+        doc.roundedRect(20, 58, 50, 30, 1, 1, 'S')
+        doc.roundedRect(79.8, 58, 50, 30, 1, 1, 'S')
+        doc.roundedRect(140, 58, 50, 30, 1, 1, 'S')
+
+        doc.roundedRect(20, 95.978, 50, 30, 1, 1, 'S')
+        doc.roundedRect(79.8, 95.978, 50, 30, 1, 1, 'S')
+        doc.roundedRect(140, 95.978, 50, 30, 1, 1, 'S')
+
+        doc.roundedRect(20, 133, 50, 30, 1, 1, 'S')
+        doc.roundedRect(79.8, 133, 50, 30, 1, 1, 'S')
+        doc.roundedRect(140, 133, 50, 30, 1, 1, 'S')
+
+        doc.roundedRect(20, 170, 50, 30, 1, 1, 'S')
+        doc.roundedRect(79.8, 170, 50, 30, 1, 1, 'S')
+        doc.roundedRect(140, 170, 50, 30, 1, 1, 'S')
+
+        doc.roundedRect(20, 208.4, 50, 30, 1, 1, 'S')
+        doc.roundedRect(79.8, 208.4, 50, 30, 1, 1, 'S')
+        doc.roundedRect(140, 208.4, 50, 30, 1, 1, 'S')
+
+        doc.roundedRect(20, 246, 50, 30, 1, 1, 'S')
+        doc.roundedRect(79.8, 246.4, 50, 30, 1, 1, 'S')
+        doc.roundedRect(140, 246, 50, 30, 1, 1, 'S')
+        //TEXTUAI'S'
+        doc.setFontSize(10)
+        doc.text(25, 25, TituloItem)
+        doc.text(25, 29, PrecoAvista)
+        doc.text(25, 32.5, PrecoAPrazo)
+        doc.text(25, 37, QTVezes)
+        doc.text(25, 41.02, TxJuros)
+        doc.text(25, 45.5, OutrosEncargos)
+
+        doc.text(83.75, 25, TituloItem)
+        doc.text(83.75, 29, PrecoAvista)
+        doc.text(83.75, 32.5, PrecoAPrazo)
+        doc.text(83.75, 37, QTVezes)
+        doc.text(83.75, 41.02, TxJuros)
+        doc.text(83.75, 45.5, OutrosEncargos)
+
+        doc.text(144.1, 25, TituloItem)
+        doc.text(144.1, 29, PrecoAvista)
+        doc.text(144.1, 32.5, PrecoAPrazo)
+        doc.text(144.1, 37, QTVezes)
+        doc.text(144.1, 41.02, TxJuros)
+        doc.text(144.1, 45.5, OutrosEncargos)
+
+        doc.text(25, 63, TituloItem)
+        doc.text(25, 67, PrecoAvista)
+        doc.text(25, 71, PrecoAPrazo)
+        doc.text(25, 75, QTVezes)
+        doc.text(25, 79, TxJuros)
+        doc.text(25, 83, OutrosEncargos)
+
+        doc.text(83.75, 63, TituloItem)
+        doc.text(83.75, 67, PrecoAvista)
+        doc.text(83.75, 71, PrecoAPrazo)
+        doc.text(83.75, 75, QTVezes)
+        doc.text(83.75, 79, TxJuros)
+        doc.text(83.75, 83, OutrosEncargos)
+
+        doc.text(144.1, 63, TituloItem)
+        doc.text(144.1, 67, PrecoAvista)
+        doc.text(144.1, 71, PrecoAPrazo)
+        doc.text(144.1, 75, QTVezes)
+        doc.text(144.1, 79, TxJuros)
+        doc.text(144.1, 83, OutrosEncargos)
+
+        doc.text(25, 101, TituloItem)
+        doc.text(25, 105, PrecoAvista)
+        doc.text(25, 109, PrecoAPrazo)
+        doc.text(25, 113, QTVezes)
+        doc.text(25, 117, TxJuros)
+        doc.text(25, 121, OutrosEncargos)
+
+        doc.text(83.75, 101, TituloItem)
+        doc.text(83.75, 105, PrecoAvista)
+        doc.text(83.75, 109, PrecoAPrazo)
+        doc.text(83.75, 113, QTVezes)
+        doc.text(83.75, 117, TxJuros)
+        doc.text(83.75, 121, OutrosEncargos)
+
+        doc.text(144.1, 101, TituloItem)
+        doc.text(144.1, 105, PrecoAvista)
+        doc.text(144.1, 109, PrecoAPrazo)
+        doc.text(144.1, 113, QTVezes)
+        doc.text(144.1, 117, TxJuros)
+        doc.text(144.1, 121, OutrosEncargos)
+
+        doc.text(25, 138, TituloItem)
+        doc.text(25, 142, PrecoAvista)
+        doc.text(25, 146, PrecoAPrazo)
+        doc.text(25, 150, QTVezes)
+        doc.text(25, 154, TxJuros)
+        doc.text(25, 158, OutrosEncargos)
+
+        doc.text(83.75, 138, TituloItem)
+        doc.text(83.75, 142, PrecoAvista)
+        doc.text(83.75, 146, PrecoAPrazo)
+        doc.text(83.75, 150, QTVezes)
+        doc.text(83.75, 154, TxJuros)
+        doc.text(83.75, 158, OutrosEncargos)
+
+        doc.text(144.1, 138, TituloItem)
+        doc.text(144.1, 142, PrecoAvista)
+        doc.text(144.1, 146, PrecoAPrazo)
+        doc.text(144.1, 150, QTVezes)
+        doc.text(144.1, 154, TxJuros)
+        doc.text(144.1, 158, OutrosEncargos)
+
+        doc.text(25, 175, TituloItem)
+        doc.text(25, 179, PrecoAvista)
+        doc.text(25, 183, PrecoAPrazo)
+        doc.text(25, 187, QTVezes)
+        doc.text(25, 191, TxJuros)
+        doc.text(25, 195, OutrosEncargos)
+
+        doc.text(83.75, 175, TituloItem)
+        doc.text(83.75, 179, PrecoAvista)
+        doc.text(83.75, 183, PrecoAPrazo)
+        doc.text(83.75, 187, QTVezes)
+        doc.text(83.75, 191, TxJuros)
+        doc.text(83.75, 195, OutrosEncargos)
+
+        doc.text(144.1, 175, TituloItem)
+        doc.text(144.1, 179, PrecoAvista)
+        doc.text(144.1, 183, PrecoAPrazo)
+        doc.text(144.1, 187, QTVezes)
+        doc.text(144.1, 191, TxJuros)
+        doc.text(144.1, 195, OutrosEncargos)
+
+        doc.text(25, 214, TituloItem)
+        doc.text(25, 218, PrecoAvista)
+        doc.text(25, 222, PrecoAPrazo)
+        doc.text(25, 226, QTVezes)
+        doc.text(25, 230, TxJuros)
+        doc.text(25, 234, OutrosEncargos)
+
+        doc.text(83.75, 214, TituloItem)
+        doc.text(83.75, 218, PrecoAvista)
+        doc.text(83.75, 222, PrecoAPrazo)
+        doc.text(83.75, 226, QTVezes)
+        doc.text(83.75, 230, TxJuros)
+        doc.text(83.75, 234, OutrosEncargos)
+
+        doc.text(144.1, 214, TituloItem)
+        doc.text(144.1, 218, PrecoAvista)
+        doc.text(144.1, 222, PrecoAPrazo)
+        doc.text(144.1, 226, QTVezes)
+        doc.text(144.1, 230, TxJuros)
+        doc.text(144.1, 234, OutrosEncargos)
+
+
+        doc.text(25, 251, TituloItem)
+        doc.text(25, 255, PrecoAvista)
+        doc.text(25, 259, PrecoAPrazo)
+        doc.text(25, 263, QTVezes)
+        doc.text(25, 267, TxJuros)
+        doc.text(25, 271, OutrosEncargos)
+
+        doc.text(83.75, 251, TituloItem)
+        doc.text(83.75, 255, PrecoAvista)
+        doc.text(83.75, 259, PrecoAPrazo)
+        doc.text(83.75, 263, QTVezes)
+        doc.text(83.75, 267, TxJuros)
+        doc.text(83.75, 271, OutrosEncargos)
+
+        doc.text(144.1, 251, TituloItem)
+        doc.text(144.1, 255, PrecoAvista)
+        doc.text(144.1, 259, PrecoAPrazo)
+        doc.text(144.1, 263, QTVezes)
+        doc.text(144.1, 267, TxJuros)
+        doc.text(144.1, 271, OutrosEncargos)
+
+        doc.save('Eiqueta.pdf');
+    }
+
+}

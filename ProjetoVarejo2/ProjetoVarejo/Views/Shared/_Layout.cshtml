@@ -50,7 +50,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="~/index.html">
-                            <img src="~/images/icon/logo_cdl.png" alt="CoolAdmin" />
+                            <img src="~/images/icon/logo_cdl.png" alt="CDL" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -68,16 +68,17 @@
                                 <i class="fas fa-home"></i>Início
                             </a>
                         </li>
-                        <li>
+                        @*<li>
                             <a href="visaoGeral.html">
                                 <i class="fas fa-chart-bar"></i>Visão Geral
                             </a>
-                        </li>
+                        </li>*@
                         <li>
-                            <a asp-area="" asp-controller="Pedido" asp-action="Index">
-                                <i class="fa fa-shopping-cart"></i>Vendas
+                            <a asp-area="" asp-controller="Home" asp-action="GerarEtiqueta">
+                                <i class="fas fa-truck"></i>Gerar Etiqueta
                             </a>
                         </li>
+
                         <li>
                             <a asp-area="" asp-controller="Home" asp-action="RelAbc">
                                 <i class="fa fa-shopping-cart"></i>Relatorio ABC
@@ -103,6 +104,12 @@
                                 <i class="fas fa-truck"></i>Estoque
                             </a>
                         </li>
+
+                        <li>
+                            <a asp-area="" asp-controller="Pedido" asp-action="Index">
+                                <i class="fa fa-shopping-cart"></i>Vendas
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -112,7 +119,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="~/images/icon/logo_cdl.png" alt="Cool Admin" />
+                    <img style="width: 85%" src="~/images/icon/logo_cdl.png" alt="CDL" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -124,15 +131,16 @@
                             </a>
                         </li>
                         <li>
-                            <a href="visaoGeral.html">
-                                <i class="fas fa-chart-bar"></i>Visão Geral
+                            <a asp-area="" asp-controller="Home" asp-action="GerarEtiqueta">
+                                <i class="fas fa-tag"></i>Gerar Etiqueta
                             </a>
                         </li>
-                        <li>
-                            <a asp-area="" asp-controller="Pedido" asp-action="Index">
-                                <i class="fa fa-shopping-cart"></i>Vendas
-                            </a>
-                        </li>
+                        @*<li>
+            <a href="visaoGeral.html">
+                <i class="fas fa-chart-bar"></i>Visão Geral
+            </a>
+        </li>*@
+
                         @*<li>
             <a asp-area="" asp-controller="Home" asp-action="RelAbc">
                 <i class="fas fa-chart-bar"></i>Relatorio ABC
@@ -170,7 +178,13 @@
                         </li>
                         <li>
                             <a asp-area="" asp-controller="Pagamento" asp-action="Index">
-                                <i class="fas fa-truck"></i>Pagamento
+                                <i class=" fa fa-money"></i>Pagamento
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-area="" asp-controller="Pedido" asp-action="Index">
+                                <i class="fa fa-shopping-cart"></i>Vendas
                             </a>
                         </li>
                     </ul>
@@ -190,48 +204,49 @@
 
             <!-- HEADER DESKTOP-->
             @*<header class="header-desktop">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <div class="header-wrap barra">
-                        <div class="header-button">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap barra">
+                            <div class="header-button">
 
-                            <div class="noti-wrap">
-                                <div class="noti__item js-item-menu">
-                                    <i class="zmdi zmdi-notifications"></i>
-                                    <span class="quantity">3</span>
-                                    <div class="account-dropdown js-dropdown">
-                                        <div class="notifi__title">
-                                            <p>You have 3 Notifications</p>
-                                        </div>
-                                        <div class="notifi__item">
-                                            <div class="bg-c1 img-cir img-40">
-                                                <i class="zmdi zmdi-email-open"></i>
+                                <div class="noti-wrap">
+                                    <div class="noti__item js-item-menu">
+                                        <i class="zmdi zmdi-notifications"></i>
+                                        <span class="quantity">3</span>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="notifi__title">
+                                                <p>You have 3 Notifications</p>
                                             </div>
-                                            <div class="content">
-                                                <p>You got a email notification</p>
-                                                <span class="date">April 12, 2018 06:50</span>
+                                            <div class="notifi__item">
+                                                <div class="bg-c1 img-cir img-40">
+                                                    <i class="zmdi zmdi-email-open"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <p>You got a email notification</p>
+                                                    <span class="date">April 12, 2018 06:50</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="notifi__item">
-                                            <div class="bg-c2 img-cir img-40">
-                                                <i class="zmdi zmdi-account-box"></i>
+                                            <div class="notifi__item">
+                                                <div class="bg-c2 img-cir img-40">
+                                                    <i class="zmdi zmdi-account-box"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <p>Your account has been blocked</p>
+                                                    <span class="date">April 12, 2018 06:50</span>
+                                                </div>
                                             </div>
-                                            <div class="content">
-                                                <p>Your account has been blocked</p>
-                                                <span class="date">April 12, 2018 06:50</span>
+                                            <div class="notifi__item">
+                                                <div class="bg-c3 img-cir img-40">
+                                                    <i class="zmdi zmdi-file-text"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <p>You got a new file</p>
+                                                    <span class="date">April 12, 2018 06:50</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="notifi__item">
-                                            <div class="bg-c3 img-cir img-40">
-                                                <i class="zmdi zmdi-file-text"></i>
+                                            <div class="notifi__footer">
+                                                <a href="#">All notifications</a>
                                             </div>
-                                            <div class="content">
-                                                <p>You got a new file</p>
-                                                <span class="date">April 12, 2018 06:50</span>
-                                            </div>
-                                        </div>
-                                        <div class="notifi__footer">
-                                            <a href="#">All notifications</a>
                                         </div>
                                     </div>
                                 </div>
@@ -239,83 +254,84 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </header>*@
+            </header>*@
         </div>
-            @*<nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ProjetoVarejo</a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            @*<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>*@
-            @*<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="RelEstoqueAsync">Relatorio Estoque</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="RelAbc">Relatorio ABC</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="RelProdutosLiq">Relatorio Liquidação</a></li>
-                                <li><a asp-area="" asp-controller="Cliente" asp-action="Index">Cliente</a></li>
-                                <li><a asp-area="" asp-controller="Produto" asp-action="Index">Produto</a></li>
-                                <li><a asp-area="" asp-controller="Pedido" asp-action="Index">Pedido</a></li>
-                                <li><a asp-area="" asp-controller="Vendedor" asp-action="Index">Vendedor</a></li>
-                                <li><a asp-area="" asp-controller="Estoque" asp-action="Index">Estoque</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>*@
-       
+        @*<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ProjetoVarejo</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>*@
+        @*<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="RelEstoqueAsync">Relatorio Estoque</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="RelAbc">Relatorio ABC</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="RelProdutosLiq">Relatorio Liquidação</a></li>
+                        <li><a asp-area="" asp-controller="Cliente" asp-action="Index">Cliente</a></li>
+                        <li><a asp-area="" asp-controller="Produto" asp-action="Index">Produto</a></li>
+                        <li><a asp-area="" asp-controller="Pedido" asp-action="Index">Pedido</a></li>
+                        <li><a asp-area="" asp-controller="Vendedor" asp-action="Index">Vendedor</a></li>
+                        <li><a asp-area="" asp-controller="Estoque" asp-action="Index">Estoque</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>*@
 
-            <environment include="Development">
-                <script src="~/lib/jquery/dist/jquery.js"></script>
-                <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-                <script src="~/js/site.js" asp-append-version="true"></script>
-            </environment>
-            <environment exclude="Development">
-                <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                        asp-fallback-test="window.jQuery"
-                        crossorigin="anonymous"
-                        integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-                </script>
-                <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                        crossorigin="anonymous"
-                        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-                </script>
-                <script src="~/js/site.min.js" asp-append-version="true"></script>
-            </environment>
-            <!-- Jquery JS-->
-            <script src="~/vendor/jquery-3.2.1.min.js"></script>
-            <!-- Bootstrap JS-->
-            <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
-            <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
-            <!-- Vendor JS       -->
-            <script src="~/vendor/slick/slick.min.js">
-            </script>
-            <script src="~/vendor/wow/wow.min.js"></script>
-            <script src="~/vendor/animsition/animsition.min.js"></script>
-            <script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-            </script>
-            <script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
-            <script src="~/vendor/counter-up/jquery.counterup.min.js">
-            </script>
-            <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
-            <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-            <script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
-            <script src="~/vendor/select2/select2.min.js">
-            </script>
 
-            <!-- Main JS-->
-            <script src="~/js/main.js"></script>
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
+        <!-- Jquery JS-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
 
-            @RenderSection("Scripts", required: false)
+        <script src="~/vendor/jquery-3.2.1.min.js"></script>
+        <!-- Bootstrap JS-->
+        <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+        <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+        <!-- Vendor JS       -->
+        <script src="~/vendor/slick/slick.min.js">
+        </script>
+        <script src="~/vendor/wow/wow.min.js"></script>
+        <script src="~/vendor/animsition/animsition.min.js"></script>
+        <script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+        </script>
+        <script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
+        <script src="~/vendor/counter-up/jquery.counterup.min.js">
+        </script>
+        <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
+        <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
+        <script src="~/vendor/select2/select2.min.js">
+        </script>
+
+        <!-- Main JS-->
+        <script src="~/js/main.js"></script>
+
+        @RenderSection("Scripts", required: false)
 </body>
 </html>

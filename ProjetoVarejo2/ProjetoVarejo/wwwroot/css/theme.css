@@ -3170,7 +3170,7 @@ section {
 }
 
 .overview-box .icon i {
-    font-size: 60px;
+    font-size: 30px;
     color: #fff;
 }
 
@@ -4269,7 +4269,7 @@ section {
     white-space: nowrap;
     font-size: 14px;
     color: #fff;
-    padding: 14px 5px;
+    padding: 16px 8px;
     border-top: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }

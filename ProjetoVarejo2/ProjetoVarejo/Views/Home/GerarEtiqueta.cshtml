@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Title Page-->
+
+
+    <!-- Fontfaces CSS-->
+    <link href="~/css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="~/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="~/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="~/css/theme.css" rel="stylesheet" media="all">
+    <link href="~/css/style.css" rel="stylesheet" media="all">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
+            crossorigin="anonymous"></script>
+
+</head>
+
+
+
+
+<body class="animsition">
+ 
+            <!-- HEADER DESKTOP-->
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- INICIO DO CONTEUDO-->
+
+                                <h3>GERAR ETIQUETA</h3>
+                                <br>
+
+                                <div class="card">
+                                    <div class="card-body card-block">
+                                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Nome do Produto</label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" id="nome" name="text-input" placeholder="Kingston" class="form-control" value="" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Preço a Vista</label>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <input type="number" id="precoVista" name="text-input" placeholder="R$ 20,0" class="form-control" value="" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Preço a Prazo</label>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <input type="number" id="precoPrazo" name="text-input" placeholder="R$ 20,0" class="form-control" value="" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Nº de Parcelas</label>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <input type="number" id="parcelas" name="text-input" placeholder="2" class="form-control" value="" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Taxa de Juros</label>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <input type="number" id="juros" name="text-input" placeholder="R$ 7,0" class="form-control" value="" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Outros Encargos</label>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <input type="number" id="outros" name="text-input" placeholder="R$ 0,0" class="form-control" value="" required>
+                                                </div>
+                                            </div>
+
+
+                                            <button type="submit" onclick="gerarPdf(nome.value,precoVista.value,precoPrazo.value,parcelas.value,juros.value,outros.value)" class="btn btn-primary btn-lg">
+                                                Gerar Etiqueta
+                                            </button>
+                                        </form>
+
+
+
+
+                                    </div>
+                                </div>
+                                <!-- FIM DO CONTEUDO-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>
+                            Copyright © 2018 Colorlib. All rights reserved. Template by
+                            <a href="https://colorlib.com">Colorlib</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>*@
+
+        @*</div>*@
+        <!-- END PAGE CONTAINER-->
+
+    @*</div>*@
+
+    <!-- Jquery JS-->
+    <script src="~/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="~/vendor/slick/slick.min.js">
+    </script>
+    <script src="~/vendor/wow/wow.min.js"></script>
+    <script src="~/vendor/animsition/animsition.min.js"></script>
+    <script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="~/js/main.js"></script>
+    <script src="~/js/etiqueta.js"></script>
+    <script src="~/js/validacao.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->
