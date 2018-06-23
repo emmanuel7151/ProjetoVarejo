@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+@*<h2>Create</h2>
 
 <h4>Estoque</h4>
 <hr />
@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ProdutoID" class="control-label"></label>
-                <select asp-for="ProdutoID" class ="form-control" asp-items="ViewBag.ProdutoID"></select>
+                <select asp-for="ProdutoID" class="form-control" asp-items="ViewBag.ProdutoID"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Quantidade" class="control-label"></label>
@@ -35,8 +35,70 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
+</div>*@
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="col-lg-10">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Cadastrar Estoque</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <form asp-action="Create" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+                                    <div class="row form-group">
+                                        @*<label for="text-input" class=" ">Produto</label>
+            <select class="form-control cc-exp col-md-10">
+                <option>001 - Tenis </option>
+                <option>002 - Tenis</option>
+            </select>*@
+
+                                        <label asp-for="ProdutoID" class="form-control-label col-md-2">Produto</label>
+                                        <select asp-for="ProdutoID" class="form-control cc-exp col-md-10" asp-items="ViewBag.ProdutoID"></select>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-md-6">
+                                            <label asp-for="ValorUnitario" class="control-label mb-1">Valor Unitário</label>
+                                            <input asp-for="ValorUnitario" type="text" class="form-control cc-exp" value="" maxlength="8" data-val="true"
+                                                   data-val-required="Preço de Custo" data-val-cc-exp="Preço de Custo" placeholder="R$ 00,00" autocomplete="cc-exp"
+                                                   onkeypress="mascara(this,moeda)">
+                                            <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label asp-for="Quantidade" class=" form-control-label">Quantidade</label>
+                                            <input type="number" asp-for="Quantidade" placeholder="1" class="form-control">
+
+                                        </div>
+                                    </div>
+                                    <div class="card-footer" align="left">
+                                        <button type="submit" class="btn btn-primary btn-md">
+                                            <i class="fa fa-dot-circle-o"></i> Salvar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="row form-group">
+
+                            </div>
+                        </div>
+                    
+                    </div>
+
+                </div>
+                <!-- FIM DO CONTEUDO-->
+
+            </div>
+
+        </div>
+    </div>
 </div>
 
-@section Scripts {
+
+@*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+}*@

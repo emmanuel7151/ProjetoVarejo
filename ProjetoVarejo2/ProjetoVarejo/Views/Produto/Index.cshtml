@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -68,4 +68,94 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- INICIO DO CONTEUDO-->
+                    <div class="row">
+                        <div class="col">
+                            <section>
+                                <div class="text-secondary btn btn-primary botao">
+                                    <a asp-action="Create"><i class="fa fa-plus-circle"></i>&nbsp;Adicionar Produto</a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="table-responsive m-b-40">
+                            <table class="table table-borderless table-data3">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Marca
+                                        </th>
+                                        <th>
+                                           Modelo
+                                        </th>
+                                        <th>
+                                            Tipo
+                                        </th>
+                                        <th>
+                                            Preço de Venda
+                                        </th>
+                                        <th>
+                                            Preço de Custo
+                                        </th>
+                                        <th>
+                                            Posição no Estoque
+                                        </th>
+                                        <th>
+                                            Especificação
+                                        </th>
+                                        <th>
+                                            Detalhes
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Marca)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Modelo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Tipo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PrecoVenda)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PrecoCusto)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PosicaoEstoque)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Especificação)
+                                            </td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btnCliente">Visualizar</a> 
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END PAGE CONTAINER-->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

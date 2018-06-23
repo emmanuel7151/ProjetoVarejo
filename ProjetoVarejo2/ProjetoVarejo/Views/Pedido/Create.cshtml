@@ -1,6 +1,6 @@
 ﻿@model ProjetoVarejo.Models.Pedido
 
-@{
+@*@{
     ViewData["Title"] = "Create";
 }
 
@@ -14,11 +14,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ClienteId" class="control-label"></label>
-                <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
+                <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="VendedorId" class="control-label"></label>
-                <select asp-for="VendedorId" class ="form-control" asp-items="ViewBag.VendedorId"></select>
+                <select asp-for="VendedorId" class="form-control" asp-items="ViewBag.VendedorId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ValorCompra" class="control-label"></label>
@@ -74,7 +74,201 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
+</div>*@
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-7">
+                    <!-- INICIO DO CONTEUDO-->
+                    <form autocomplete="off" action="/action_page.php">
+                        <div class="form-row">
+                            <div class="col-5">
+                                <div class="form-group has-success">
+                                    @*<label for="select" class=" control-label mb-1">Vendedor</label>
+        <select name="select" id="select" class="form-control">
+            <option value="0">Selecione o vendedor</option>
+            <option value="1">Fellipe Prates</option>
+            <option value="2">Joaozinho</option>
+            <option value="3">Fernanda</option>
+        </select>*@
+                                    <label asp-for="ClienteId" class="control-label"></label>
+                                    <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="form-group has-success">
+                                    <label id="cpf" class="control-label mb-1">CPF do Cliente</label>
+                                    <input id="cpf" name="cpf" placeholder="123.456.789-00" type="text" class="form-control cc-name valid" data-val="true"
+                                           maxlength="14" data-val-required="Entre com o CPF do cliente" autocomplete="cc-name" aria-required="true" aria-invalid="false"
+                                           aria-describedby="cc-name-error" onkeypress="mascara(this,cpf)">
+                                    <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-6">
+                                <div class="form-group has-success autocomplete">
+                                    <label for="myInput" class="control-label mb-1">Nome do Produto</label>
+                                    <input id="myInput" type="text" name="myCountry" placeholder="Produto" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label id="Quantidade" class="control-label mb-1">Quantidade</label>
+                                    <input id="Quantidade" name="Quantidade" type="text" class="form-control cc-exp" value="" maxlength="3" data-val="true" data-val-required="Digite a quantidade"
+                                           data-val-cc-exp="Digite a quantidade" placeholder="5" autocomplete="cc-exp" onkeypress="mascara(this,soNumeros)">
+                                    <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label id="PrecoProduto" class="control-label mb-1">Preço do Produto</label>
+                                    <input id="PrecoProduto" name="PrecoProduto" type="text" class="form-control cc-exp" value="" maxlength="8" data-val="true" data-val-required=""
+                                           data-val-cc-exp="Digite o preço da venda" placeholder="R$ 00,00" autocomplete="cc-exp" onkeypress="mascara(this,moeda)">
+                                    <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label for="cc-exp" class="control-label mb-1">Cupom</label>
+                                    <input id="cc-exp" name="cc-exp" type="text" class="form-control cc-exp" value="" data-val="true" data-val-required="Digite o codigo cupom"
+                                           data-val-cc-exp="Digite o codigo cupom" placeholder="Código Cupom" autocomplete="cc-exp">
+                                    <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="cc-exp" class="control-label mb-1">Valor Total</label>
+                                    <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" maxlength="8" value="" data-val="true" data-val-required="Mostra o valor total"
+                                           data-val-cc-exp="Mostra o valor total" placeholder="R$ 00,00" autocomplete="cc-exp" onkeypress="mascara(this,moeda)">
+                                    <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="x_card_code" class="control-label mb-1">Desconto</label>
+                                <div class="input-group">
+                                    <input id="x_card_code" name="x_card_code" type="tel" maxlength="3" placeholder="100%" class="form-control cc-cvc" value=""
+                                           data-val="true" data-val-required="Digite o desconto" data-val-cc-cvc="Digite o desconto" autocomplete="off"
+                                           onkeypress="mascara(this,soNumeros)">
+
+                                </div>
+                            </div>
+                            <br>
+
+
+
+
+                            <div class="col-3">
+                                <div class="form-group ">
+                                    <button type="button" onclick="carrinhoDeCompras()" class="btn btn-primary btn-lg">
+                                        <i class="fa fa-plus-circle"></i>&nbsp;Adicionar
+                                    </button>
+                                    <br><br>
+                                    <button type="button" class="btn btn-primary btn-lg" style="background: brown">
+                                        <i class="fa fa-plus-circle"></i>&nbsp;Concluir Venda
+                                    </button>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>
+                    </form>
+                </div>
+                <div class="col-5">
+                    <br>
+                    <div class="au-card au-card--bg-blue au-card-top-countries">
+                        <div class="au-card-inner">
+                            <div class="table-responsive" id="meuCarrinho">
+
+                                <table class="table table-top-countries">
+                                    <tbody>
+                                        <tr v-for="produto in produtos">
+                                            <td>{{produto.nome}}</td>
+                                            <td>{{produto.preco}}</td>
+                                        </tr>
+                                    </tbody>
+
+
+
+                                </table>
+
+
+                                <hr class="hr_class">
+                                <table class="table table-top-countries" id="meuCarrinho">
+                                    <tbody>
+                                        <tr>
+                                            <td class="precoTotal">
+                                                <b>Total</b>
+                                            </td>
+                                            <td class="text-right precoTotal">
+                                                <b>{{subTotal}}</b>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
 </div>
+<br>
+
+<script>
+    var countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua & Barbuda",
+        "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh",
+        "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina",
+        "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia",
+        "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central Arfrican Republic", "Chad", "Chile", "China",
+        "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cuba", "Curacao", "Cyprus",
+        "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador",
+        "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland",
+        "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar",
+        "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti",
+        "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man",
+        "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait",
+        "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania",
+        "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta",
+        "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia",
+        "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauro", "Nepal", "Netherlands",
+        "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "Norway",
+        "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland",
+        "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre & Miquelon", "Samoa",
+        "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone",
+        "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan",
+        "Spain", "Sri Lanka", "St Kitts & Nevis", "St Lucia", "St Vincent", "Sudan", "Suriname", "Swaziland", "Sweden",
+        "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga",
+        "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos", "Tuvalu", "Uganda", "Ukraine",
+        "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay", "Uzbekistan", "Vanuatu",
+        "Vatican City", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"
+    ];
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

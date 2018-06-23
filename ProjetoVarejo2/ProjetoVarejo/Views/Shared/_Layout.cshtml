@@ -49,8 +49,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="../index.html">
-                            <img src="../images/icon/logo.png" alt="CoolAdmin" />
+                        <a class="logo" href="~/index.html">
+                            <img src="~/images/icon/logo_cdl.png" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -112,7 +112,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="../images/icon/logo.png" alt="Cool Admin" />
+                    <img src="~/images/icon/logo_cdl.png" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -133,21 +133,21 @@
                                 <i class="fa fa-shopping-cart"></i>Vendas
                             </a>
                         </li>
+                        @*<li>
+            <a asp-area="" asp-controller="Home" asp-action="RelAbc">
+                <i class="fas fa-chart-bar"></i>Relatorio ABC
+            </a>
+        </li>*@
                         <li>
-                            <a asp-area="" asp-controller="Home" asp-action="RelAbc">
-                                <i class="fas fa-chart-bar"></i>Relatorio ABC
+                            <a asp-area="" asp-controller="Home" asp-action="Relatorios">
+                                <i class="fas fa-chart-bar"></i>Relatorios
                             </a>
                         </li>
-                        <li>
-                            <a asp-area="" asp-controller="Home" asp-action="RelProdutosLiq">
-                                <i class="fas fa-chart-bar"></i>Relatorio Liquidação
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="" asp-controller="Home" asp-action="RelEstoqueAsync">
-                                <i class="fas fa-chart-bar"></i>Relatorio Estoque
-                            </a>
-                        </li>
+                        @*<li>
+            <a asp-area="" asp-controller="Home" asp-action="RelEstoqueAsync">
+                <i class="fas fa-chart-bar"></i>Relatorio Estoque
+            </a>
+        </li>*@
                         <li>
                             <a asp-area="" asp-controller="Cliente" asp-action="Index">
                                 <i class="fa fa-users"></i>Clientes
@@ -166,6 +166,11 @@
                         <li>
                             <a asp-area="" asp-controller="Estoque" asp-action="Index">
                                 <i class="fas fa-truck"></i>Estoque
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Pagamento" asp-action="Index">
+                                <i class="fas fa-truck"></i>Pagamento
                             </a>
                         </li>
                     </ul>

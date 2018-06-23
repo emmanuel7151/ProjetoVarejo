@@ -19,3 +19,4 @@ C:\Users\manub\OneDrive\Documentos\Visual Studio 2017\Projects\ProjetoVarejo2\Pr
 C:\Users\manub\OneDrive\Documentos\Visual Studio 2017\Projects\ProjetoVarejo2\ProjetoVarejo\obj\Debug\netcoreapp2.0\ProjetoVarejo.AssemblyInfo.cs
 C:\Users\manub\OneDrive\Documentos\Visual Studio 2017\Projects\ProjetoVarejo2\ProjetoVarejo\obj\Debug\netcoreapp2.0\ProjetoVarejo.dll
 C:\Users\manub\OneDrive\Documentos\Visual Studio 2017\Projects\ProjetoVarejo2\ProjetoVarejo\obj\Debug\netcoreapp2.0\ProjetoVarejo.pdb
+C:\Users\manub\OneDrive\Documentos\Visual Studio 2017\Projects\ProjetoVarejo2\ProjetoVarejo\obj\Debug\netcoreapp2.0\ProjetoVarejo.csprojAssemblyReference.cache

@@ -1,0 +1,160 @@
+﻿@model IEnumerable<ProjetoVarejo.Models.Pagamento>
+@*@{
+        ViewData["Title"] = "Index";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataVencimento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ValorParcela)
+                    </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pedido)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataVencimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorParcela)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pedido.Id)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body card-block">
+                            <p class="title">Pagamentos em aberto</p>
+                            <!-- TABELA DE VENDAS -->
+                            <div class="row">
+                                <div class="table-responsive m-b-40">
+                                    <table class="table table-borderless table-data3">
+                                        <thead>
+                                            <tr>
+                                                <th>id</th>
+                                                <th>Cliente</th>
+                                                <th>Vendedor</th>
+                                                <th>Valor</th>
+                                                <th>Data da Compra</th>
+                                                <th>
+
+                                                </th>
+                                                <th>
+
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Iago Rodrigues</td>
+                                                <td>Luiz Sérgio</td>
+                                                <td>100,00</td>
+                                                <td class="data">23/06/2018</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-sm">
+                                                        <i class="fa fa-money"></i>&nbsp; Efetuar Pagamento
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-sm">
+                                                        <i class="fa fa-map-marker"></i>&nbsp; Atualizar Juros
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Iago Rodrigues</td>
+                                                <td>Luiz Sérgio</td>
+                                                <td>100,00</td>
+                                                <td class="data">23/06/2018</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-sm">
+                                                        <i class="fa fa-money"></i>&nbsp; Efetuar Pagamento
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-sm">
+                                                        <i class="fa fa-map-marker"></i>&nbsp; Atualizar Juros
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Iago Rodrigues</td>
+                                                <td>Luiz Sérgio</td>
+                                                <td>100,00</td>
+                                                <td class="data">23/06/2018</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-sm">
+                                                        <i class="fa fa-money"></i>&nbsp; Efetuar Pagamento
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-sm">
+                                                        <i class="fa fa-map-marker"></i>&nbsp; Atualizar Juros
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Iago Rodrigues</td>
+                                                <td>Luiz Sérgio</td>
+                                                <td>100,00</td>
+                                                <td class="data">23/06/2018</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-sm">
+                                                        <i class="fa fa-money"></i>&nbsp; Efetuar Pagamento
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning btn-sm">
+                                                        <i class="fa fa-map-marker"></i>&nbsp; Atualizar Juros
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

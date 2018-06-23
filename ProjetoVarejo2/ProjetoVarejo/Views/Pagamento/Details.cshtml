@@ -1,0 +1,42 @@
+﻿@model ProjetoVarejo.Models.Pagamento
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pagamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataVencimento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataVencimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorParcela)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorParcela)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pedido)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pedido.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

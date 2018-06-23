@@ -49,6 +49,12 @@ namespace ProjetoVarejo.Controllers
             return View("RelPosicaoEstoque", await _context.Produto.ToListAsync());
         }
 
+        public IActionResult Relatorios()
+        {
+            //ViewData["Message"] = "Your contact page.";
+
+            return View("Relatorios");
+        }
         public async Task<IActionResult> RelProdutosLiq()
         {
             var relatorioBar = new List<RelatorioBar>();
@@ -93,5 +99,6 @@ namespace ProjetoVarejo.Controllers
             relatorioBar = relatorioBar.OrderByDescending(c => c.Quantity).ToList();
             return View("RelatorioABC", relatorioBar);
         }
+
     }
 }

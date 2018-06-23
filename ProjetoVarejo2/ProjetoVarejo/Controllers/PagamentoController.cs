@@ -10,23 +10,23 @@ using ProjetoVarejo.Models.Data;
 
 namespace ProjetoVarejo.Controllers
 {
-    public class EstoqueController : Controller
+    public class PagamentoController : Controller
     {
         private readonly VarejoContext _context;
 
-        public EstoqueController(VarejoContext context)
+        public PagamentoController(VarejoContext context)
         {
             _context = context;
         }
 
-        // GET: Estoque
+        // GET: Pagamento
         public async Task<IActionResult> Index()
         {
-            var varejoContext = _context.Estoque.Include(e => e.Produto);
+            var varejoContext = _context.Pagamento.Include(p => p.Pedido);
             return View(await varejoContext.ToListAsync());
         }
 
-        // GET: Estoque/Details/5
+        // GET: Pagamento/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,42 +34,42 @@ namespace ProjetoVarejo.Controllers
                 return NotFound();
             }
 
-            var estoque = await _context.Estoque
-                .Include(e => e.Produto)
+            var pagamento = await _context.Pagamento
+                .Include(p => p.Pedido)
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (estoque == null)
+            if (pagamento == null)
             {
                 return NotFound();
             }
 
-            return View(estoque);
+            return View(pagamento);
         }
 
-        // GET: Estoque/Create
+        // GET: Pagamento/Create
         public IActionResult Create()
         {
-            ViewData["ProdutoID"] = new SelectList(_context.Produto, "Id", "Id");
+            ViewData["PedidoId"] = new SelectList(_context.Pedido, "Id", "Id");
             return View();
         }
 
-        // POST: Estoque/Create
+        // POST: Pagamento/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ProdutoID,Quantidade,DataEntrada,ValorUnitario")] Estoque estoque)
+        public async Task<IActionResult> Create([Bind("Id,DataVencimento,Quantidade,ValorParcela,PedidoId")] Pagamento pagamento)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(estoque);
+                _context.Add(pagamento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProdutoID"] =  new SelectList(_context.Produto, "Id", "Id", estoque.ProdutoID);
-            return View(estoque);
+            ViewData["PedidoId"] = new SelectList(_context.Pedido, "Id", "Id", pagamento.PedidoId);
+            return View(pagamento);
         }
 
-        // GET: Estoque/Edit/5
+        // GET: Pagamento/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,23 +77,23 @@ namespace ProjetoVarejo.Controllers
                 return NotFound();
             }
 
-            var estoque = await _context.Estoque.SingleOrDefaultAsync(m => m.Id == id);
-            if (estoque == null)
+            var pagamento = await _context.Pagamento.SingleOrDefaultAsync(m => m.Id == id);
+            if (pagamento == null)
             {
                 return NotFound();
             }
-            ViewData["ProdutoID"] = new SelectList(_context.Produto, "Id", "Id", estoque.ProdutoID);
-            return View(estoque);
+            ViewData["PedidoId"] = new SelectList(_context.Pedido, "Id", "Id", pagamento.PedidoId);
+            return View(pagamento);
         }
 
-        // POST: Estoque/Edit/5
+        // POST: Pagamento/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProdutoID,Quantidade,DataEntrada,ValorUnitario")] Estoque estoque)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DataVencimento,Quantidade,ValorParcela,PedidoId")] Pagamento pagamento)
         {
-            if (id != estoque.Id)
+            if (id != pagamento.Id)
             {
                 return NotFound();
             }
@@ -102,12 +102,12 @@ namespace ProjetoVarejo.Controllers
             {
                 try
                 {
-                    _context.Update(estoque);
+                    _context.Update(pagamento);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EstoqueExists(estoque.Id))
+                    if (!PagamentoExists(pagamento.Id))
                     {
                         return NotFound();
                     }
@@ -118,11 +118,11 @@ namespace ProjetoVarejo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProdutoID"] = new SelectList(_context.Produto, "Id", "Id", estoque.ProdutoID);
-            return View(estoque);
+            ViewData["PedidoId"] = new SelectList(_context.Pedido, "Id", "Id", pagamento.PedidoId);
+            return View(pagamento);
         }
 
-        // GET: Estoque/Delete/5
+        // GET: Pagamento/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,31 +130,31 @@ namespace ProjetoVarejo.Controllers
                 return NotFound();
             }
 
-            var estoque = await _context.Estoque
-                .Include(e => e.Produto)
+            var pagamento = await _context.Pagamento
+                .Include(p => p.Pedido)
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (estoque == null)
+            if (pagamento == null)
             {
                 return NotFound();
             }
 
-            return View(estoque);
+            return View(pagamento);
         }
 
-        // POST: Estoque/Delete/5
+        // POST: Pagamento/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var estoque = await _context.Estoque.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Estoque.Remove(estoque);
+            var pagamento = await _context.Pagamento.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Pagamento.Remove(pagamento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EstoqueExists(int id)
+        private bool PagamentoExists(int id)
         {
-            return _context.Estoque.Any(e => e.Id == id);
+            return _context.Pagamento.Any(e => e.Id == id);
         }
     }
 }
