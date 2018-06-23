@@ -1,0 +1,217 @@
+﻿@model IEnumerable<ProjetoVarejo.Models.Vendedor>
+
+@*@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CPF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Celular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comissao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Celular)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comissao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@
+
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- INICIO DO CONTEUDO-->
+                    <div class="row">
+                        <div class="col">
+                            <section>
+                                <div class="text-secondary btn btn-primary botao">
+                                    <div class="text-secondary btn btn-primary botao">
+                                        <a asp-action="Create"><i class="fa fa-plus-circle"></i>&nbsp;Adicionar Vendedor</a>
+                                    </div>
+                                    @*<i class="fa fa-plus-circle"></i>&nbsp;Adicionar Vendedor*@
+                                </div>
+                            </section>
+                        </div>
+                        <div class="col-lg-4">
+                            <section>
+                                <h5>Período:</h5>
+                                <select name="select" id="periodoSelect" class="form-control">
+                                    <option value="1">Janeiro</option>
+                                    <option value="2">Fevereiro</option>
+                                    <option value="3">Março</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Maio</option>
+                                    <option value="6">Junho</option>
+                                    <option value="7">Julho</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Setembro</option>
+                                    <option value="10">Outubro</option>
+                                    <option value="11">Novembro</option>
+                                    <option value="12">Dezembro</option>
+                                </select>
+                            </section>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <h2 align="center">Vendores</h2>
+                        <br>
+                        <div class="table-responsive m-b-40">
+                            <table class="table table-borderless table-data3">
+                                <thead align="center">
+                                    <tr>
+                                        <th>id</th>
+                                        <th>Nome</th>
+                                        <th>Qtdd. Vendas</th>
+                                        <th>Valor Vendas</th>
+                                        <th>Editar</th>
+                                        <th>Expandir</th>
+                                    </tr>
+                                </thead>
+                                <tbody align="center">
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nome)
+                                        </td>
+                                        <td>
+                                         25
+                                        </td>
+                                        <td>
+                                            2500
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btnCliente">Editar</a>
+
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success btnCliente">Expandir</button>
+
+                                            @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Tabela de Vendas-->
+                    <br>
+                    <div class="row">
+                        <!-- <div class="col"></div> -->
+                        <div align="center" class="col">
+                            <h2>Vendas do Vendedor</h2>
+                            <br>
+
+                            <div class="table-responsive col-md-8">
+                                <table class="table table-borderless table-data3">
+                                    <thead align="center">
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Data</th>
+                                            <th>Valor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody align="center">
+                                        <tr>
+                                            <td>5</td>
+                                            <td class="data">25/05/2018</td>
+                                            <td>2500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td class="data">22/05/2018</td>
+                                            <td>1500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td class="data">20/05/2018</td>
+                                            <td>2000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td class="data">05/05/2018</td>
+                                            <td>500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>15</td>
+                                            <td class="data">17/03/2018</td>
+                                            <td>5500</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- END PAGE CONTAINER-->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

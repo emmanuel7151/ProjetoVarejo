@@ -1,0 +1,153 @@
+﻿@model IEnumerable<ProjetoVarejo.Models.Cliente>
+
+@*@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CPF)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataNascimento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Endereco)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Celular)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Facebook)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Instagran)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Promoção)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Acessibilidade)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endereco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Celular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Facebook)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instagran)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Promoção)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acessibilidade)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- INICIO DO CONTEUDO-->
+                    <div class="row">
+                        <div class="col">
+                            <section>
+                                <div class="text-secondary btn btn-primary botao">
+                                    <a asp-action="Create"><i class="fa fa-plus-circle"></i>&nbsp;Adicionar Cliente</a>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="table-responsive m-b-40">
+                            <table class="table table-borderless table-data3">
+                                <thead>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>Nasc.</th>
+                                        @*<th>Última Compra</th>*@
+                                        <th>Detalhes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Nome)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CPF)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DataNascimento)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-success btnCliente">Visualizar</a>
+                                         
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END PAGE CONTAINER-->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

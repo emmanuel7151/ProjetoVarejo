@@ -1,0 +1,15 @@
+.barra{
+    float: right !important;
+}
+.botao{
+    color: white !important;
+}
+.form10{
+    width: 10% !important;
+    
+}
+.iconsFA{
+    font-size:35px;
+    position: absolute;
+    bottom: 5px;
+}

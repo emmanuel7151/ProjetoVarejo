@@ -1,0 +1,180 @@
+﻿@model ProjetoVarejo.Models.Produto
+
+@*@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Produto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Marca" class="control-label"></label>
+                <input asp-for="Marca" class="form-control" />
+                <span asp-validation-for="Marca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Modelo" class="control-label"></label>
+                <input asp-for="Modelo" class="form-control" />
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <input asp-for="Tipo" class="form-control" />
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecoVenda" class="control-label"></label>
+                <input asp-for="PrecoVenda" class="form-control" />
+         
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecoCusto" class="control-label"></label>
+                <input asp-for="PrecoCusto" class="form-control" />
+                <span asp-validation-for="PrecoCusto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PosicaoEstoque" class="control-label"></label>
+                <input asp-for="PosicaoEstoque" class="form-control" />
+                <span asp-validation-for="PosicaoEstoque" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Especificação" class="control-label"></label>
+                <input asp-for="Especificação" class="form-control" />
+                <span asp-validation-for="Especificação" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="col-lg-10">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Cadastrar Produto</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <form asp-action="Edit" class="form-horizontal">
+                                    <input type="hidden" asp-for="Id" />
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label asp-for="Marca" class=" form-control-label">Marca</label>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <input type="text" asp-for="Marca" placeholder="Nike" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label asp-for="Modelo" class=" form-control-label">Modelo</label>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <input type="text" asp-for="Modelo" placeholder="Shox" class="form-control">
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label asp-for="Tipo" class=" form-control-label">Tipo de Produto</label>
+                                        </div>
+                                        <div class="col col-md-6">
+                                            <div class="form-check">
+                                                <div class="radio">
+                                                    <label for="radio1" class="form-check-label ">
+                                                        <input type="radio" asp-for="Tipo" value="roupa" class="form-check-input">Roupa
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label for="radio2" class="form-check-label ">
+                                                        <input type="radio" asp-for="Tipo" value="calcado" class="form-check-input">Calçado
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label for="radio3" class="form-check-label ">
+                                                        <input type="radio" asp-for="Tipo" value="acessorio" class="form-check-input">Acessório
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label asp-for="Especificação" class=" form-control-label">Especificação</label>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <input type="text" asp-for="Especificação" placeholder="Tamanho" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label asp-for="PosicaoEstoque" class=" form-control-label">Posição</label>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <input type="text" asp-for="PosicaoEstoque" placeholder="Localização no estoque" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-6">
+                                            <label asp-for="PrecoCusto" class="control-label mb-1">Preço de Custo</label>
+                                            <input asp-for="PrecoCusto" type="text" class="form-control cc-exp" value="" maxlength="8" data-val="true"
+                                                   data-val-required="Preço de Custo" data-val-cc-exp="Preço de Custo" placeholder="R$ 00,00" autocomplete="cc-exp"
+                                                   onkeypress="mascara(this,moeda)">
+                                            @*<span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>*@
+                                        </div>
+                                        <div class="col col-md-6">
+                                            <label asp-for="PrecoVenda" class="control-label mb-1">Preço da Venda</label>
+                                            <input asp-for="PrecoVenda" type="text" class="form-control cc-exp" value="" maxlength="8" data-val="true"
+                                                   data-val-required="Digite o preço da venda" data-val-cc-exp="Digite o preço da venda" placeholder="R$ 00,00"
+                                                   autocomplete="cc-exp" onkeypress="mascara(this,moeda)">
+                                            @*<span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>*@
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Salvar
+                                        </button>
+                                    </div>
+                                </form>
+                                <form asp-action="Delete">
+                                    <input type="hidden" asp-for="Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Excluir
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        </div>
+
+                    </div>
+                    <!-- FIM DO CONTEUDO-->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
